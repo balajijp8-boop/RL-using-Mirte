@@ -59,9 +59,9 @@ def make_env():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--steps", type=int, default=3_000_000)
-    parser.add_argument("--n-envs", type=int, default=10)
-    parser.add_argument("--out", type=str, default="runs/ppo_gimbal")
+    parser.add_argument("--steps", type=int, default=8_000_000)
+    parser.add_argument("--n-envs", type=int, default=12)
+    parser.add_argument("--out", type=str, default="runs/ppo_gimbal_v2")
     args = parser.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
@@ -83,7 +83,7 @@ def main():
         ent_coef=0.001,
         policy_kwargs=dict(net_arch=[256, 256]),
         tensorboard_log=args.out,
-        device="cpu",
+        device="cuda",
         verbose=1,
     )
 

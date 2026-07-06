@@ -60,21 +60,15 @@ MAX_LIN_VEL, MAX_ANG_VEL = 0.8, 1.2
 KP_V, F_MAX = 30.0, 90.0           # cap -> a_max ~6.4 m/s^2 (tip threshold ~3.3)
 KP_W, TZ_MAX = 4.0, 6.0
 ACC_CLIP = 4.0                     # m/s^2, feedforward tilt authority
-TRIM_SCALE = 0.15                  # rad, policy gimbal trim authority
+TRIM_SCALE = 0.30                  # rad, policy gimbal trim authority (doubled for learning)
 LEVEL_GAIN = 1.0                   # scripted leveling feedback gain
-# tray-tilt catch is ineffective for high-friction flat-based stacks (the stack
-# tips WITH the tray); the effective catch is the BASE reflex below. Tray gains
-# default 0 but stay tunable for experiments.
 K_CATCH = 0.0
 K_LEAND = 0.0
-CATCH_CLIP = 0.25                  # max catch tilt component (rad-equivalent)
-CATCH_DEADBAND = 0.02              # rad; ignore micro-lean so rest stays quiet
-# cart-pole reflex as an ACCELERATION law (a ~ g*lean neutralizes gravity's
-# tipping torque; rate term damps the swing), integrated into a leaky
-# reflex-velocity state so the catch releases smoothly instead of limit-cycling
-KA_REFLEX, KD_REFLEX = 14.0, 4.0
-REFLEX_LEAK = 0.996                # per physics substep (0.96 per control step)
-REFLEX_VMAX = 0.8
+CATCH_CLIP = 0.25
+CATCH_DEADBAND = 0.02
+KA_REFLEX, KD_REFLEX = 25.0, 8.0   # stronger base cart-pole catch (was 14, 4)
+REFLEX_LEAK = 0.98                 # per physics substep (more aggressive catch release)
+REFLEX_VMAX = 1.2                  # allow larger catch velocity (was 0.8)
 W_LEAN1, W_LEAN2 = 0.35, 0.65      # cylinder lean blend for the reflex signal
 RATE_ALPHA = 0.4                   # lean-rate EMA (per substep)
 REFLEX_DEADBAND = 0.01             # rad
@@ -85,9 +79,14 @@ CTRL_DT = PHYSICS_DT * FRAME_SKIP
 TILT_LIMIT = 0.5
 FLIP_LIMIT = 0.6
 
-W_PROGRESS, W_TILT_BOT, W_TILT_TOP, W_TRAY = 5.0, 1.0, 3.0, 1.0
-W_JERK, TIME_PENALTY = 0.05, 0.01
-P_FAIL, R_SUCCESS = 15.0, 30.0
+# LEARNABLE reward: tilt penalties reduced 10x, progress rewarded, no time drain
+W_PROGRESS = 10.0                  # was 5.0; reaching goal is the goal
+W_TILT_BOT = 0.1                   # was 1.0; allow some wobble while learning
+W_TILT_TOP = 0.3                   # was 3.0; top is important but not prohibitive
+W_TRAY = 0.1                       # was 1.0; gimbal is servo'd, not magic
+W_JERK = 0.02                      # was 0.05; smooth is nice but not critical
+TIME_PENALTY = 0.0                 # was 0.01; no per-step drain — learn to win
+P_FAIL, R_SUCCESS = 20.0, 50.0     # was 15, 30; heavy penalties/bonuses for success
 
 LIDAR_ANGLES = np.deg2rad([0, 45, 90, 135, 180, 225, 270, 315])
 
