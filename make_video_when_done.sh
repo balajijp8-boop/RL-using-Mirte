@@ -8,12 +8,22 @@ cd /home/balaji/mirte_balance_rl
 
 LOG=runs/ppo_gimbal/train.log
 PY=/home/balaji/venvs/mirte_rl/bin/python
+TRAIN_PID=${TRAIN_PID:-29127}
 
-echo "[auto-video] waiting for training to finish (polling $LOG)…"
-while ! grep -q "saved model and normalization stats" "$LOG" 2>/dev/null; do
+echo "[auto-video] waiting for training to end (finish OR process exit; PID $TRAIN_PID)…"
+while true; do
+    if grep -q "saved model and normalization stats" "$LOG" 2>/dev/null; then
+        echo "[auto-video] training finished cleanly."
+        break
+    fi
+    if ! kill -0 "$TRAIN_PID" 2>/dev/null; then
+        echo "[auto-video] training process gone (crash/OOM?) — rendering from the"
+        echo "             snapshots that exist so the video isn't lost."
+        break
+    fi
     sleep 30
 done
-echo "[auto-video] training done — freeing settles, rendering in 15 s…"
+echo "[auto-video] letting memory settle, rendering in 15 s…"
 sleep 15
 
 MUJOCO_GL=egl "$PY" record_progress.py \
