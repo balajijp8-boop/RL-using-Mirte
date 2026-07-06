@@ -1,2 +1,15 @@
 __pycache__/
 *.pyc
+# Large model files (trained policies)
+runs/ppo_gimbal/snap_*.zip
+runs/ppo_gimbal/snap_*_vecnorm.pkl
+runs/ppo_gimbal/ppo_final.zip
+runs/ppo_gimbal/vecnormalize.pkl
+runs/ppo_gimbal/PPO_1/
+
+# Video output
+mirte_rl_progress.mp4
+
+# TensorBoard logs
+runs/*/events.out.tfevents*
+runs/*/*.log
