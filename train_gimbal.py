@@ -25,7 +25,8 @@ from mirte_gimbal_env import MirteGimbalBalanceEnv as MirteStackedBalanceEnv
 # dense early because that is where the policy goes from flailing -> competent.
 SNAPSHOT_STEPS = [10_000, 25_000, 50_000, 100_000, 200_000, 350_000,
                   500_000, 750_000, 1_000_000, 1_500_000, 2_000_000,
-                  2_500_000, 3_000_000]
+                  2_500_000, 3_000_000, 4_000_000, 5_000_000, 6_000_000,
+                  8_000_000, 10_000_000, 12_000_000, 14_000_000, 16_000_000]
 
 
 class ProgressSnapshot(BaseCallback):
@@ -54,14 +55,28 @@ class ProgressSnapshot(BaseCallback):
 
 
 def make_env():
-    return MirteStackedBalanceEnv()
+    # start_curriculum: TRAINING ONLY -- 65% of episodes spawn at a random
+    # collision-free pose along the course (reverse curriculum). Eval and
+    # video scripts construct the env without it, so success still means
+    # "crossed the full course from the standard start".
+    return MirteStackedBalanceEnv(start_curriculum=True)
+
+
+def linear_lr(initial):
+    """Linear decay to 0. SB3 calls this with progress_remaining in [1, 0].
+
+    v3 post-mortem: constant 3e-4 with 10 epochs/rollout produced
+    clip_fraction 0.52-0.63 and approx_kl 0.09-0.16 (healthy: <0.3, <0.05) --
+    updates so aggressive that policy std collapsed 0.99 -> 0.117 and
+    exploration died before navigation was learned."""
+    return lambda progress_remaining: initial * progress_remaining
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--steps", type=int, default=8_000_000)
+    parser.add_argument("--steps", type=int, default=16_000_000)
     parser.add_argument("--n-envs", type=int, default=12)
-    parser.add_argument("--out", type=str, default="runs/ppo_gimbal_v2")
+    parser.add_argument("--out", type=str, default="runs/ppo_gimbal_v4")
     args = parser.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
@@ -73,14 +88,15 @@ def main():
     model = PPO(
         "MlpPolicy",
         env,
-        learning_rate=3e-4,
+        learning_rate=linear_lr(2.5e-4),   # was constant 3e-4 (see linear_lr)
         n_steps=2048,
         batch_size=512,
-        n_epochs=10,
+        n_epochs=5,                        # was 10: halve update aggressiveness
         gamma=0.99,
         gae_lambda=0.95,
         clip_range=0.2,
-        ent_coef=0.001,
+        ent_coef=0.006,                    # was 0.001: sustain exploration
+        target_kl=0.04,                    # early-stop epochs on KL blowup
         policy_kwargs=dict(net_arch=[256, 256]),
         tensorboard_log=args.out,
         device="cuda",

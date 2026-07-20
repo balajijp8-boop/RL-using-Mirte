@@ -1,0 +1,7 @@
+transplant: 10 copied, expanded ['log_std (5,)->(7,)', 'action_net.weight (5, 256)->(7, 256)', 'action_net.bias (5,)->(7,)'], skipped []
+saved snap_00000k (pre-train). EVAL IT (--arm-action) before trusting the run.
+[snapshot] saved snap_00010k at 10000 steps
+[snapshot] saved snap_00050k at 50000 steps
+[snapshot] saved snap_00100k at 100000 steps
+[snapshot] saved snap_00250k at 250000 steps
+[snapshot] saved snap_00500k at 500000 steps

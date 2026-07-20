@@ -1,0 +1,11 @@
+[15:32:03] === launching v33: from runs/ppo_gimbal_v32/snap_02000k, lr=2.5e-06, NO-CURRICULUM ===
+[15:54:14] v33 500k: 50/60 (median 126.6)
+[16:11:14] v33 1M: 54/60 (median 128.5)
+[16:16:34] v33 1M confirm: 52/60 fresh -> pooled 106/120 (88.3%)
+[16:27:08] v33 1.5M: 52/60 (median 128.3)
+[16:32:25] v33 1.5M confirm: 50/60 fresh -> pooled 102/120 (85.0%)
+[16:43:31] v33 2M: 49/60 (median 126.4)
+[17:14:36] v33 3M: 50/60 (median 127.3)
+[17:46:17] v33 4M: 44/60 (median 126.7)
+[18:16:58] v33 5M: 48/60 (median 129.5)
+[18:47:29] v33 6M: 47/60 (median 127.5)

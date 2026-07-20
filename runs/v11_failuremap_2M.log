@@ -1,0 +1,37 @@
+ep  1: dropped    at x=-0.91 (pillar_field) speed 1.10
+ep  2: dropped    at x=+1.08 (stairs      ) speed 1.18
+ep  3: dropped    at x=-1.90 (pillar_field) speed 0.11
+ep  4: dropped    at x=-1.50 (pillar_field) speed 0.82
+ep  5: dropped    at x=-0.42 (doorway     ) speed 0.53
+ep  6: dropped    at x=+1.04 (stairs      ) speed 0.13
+ep  7: collision  at x=-0.35 (doorway     ) speed 0.79
+ep  8: dropped    at x=-0.35 (doorway     ) speed 1.18
+ep  9: collision  at x=-0.22 (doorway     ) speed 0.53
+ep 10: stalled    at x=+0.82 (stairs      ) speed 0.41
+ep 11: dropped    at x=-0.36 (doorway     ) speed 1.13
+ep 12: dropped    at x=+0.10 (doorway     ) speed 1.23
+ep 13: dropped    at x=-0.93 (pillar_field) speed 1.26
+ep 14: dropped    at x=-0.92 (pillar_field) speed 1.28
+ep 15: dropped    at x=-1.99 (pillar_field) speed 0.80
+ep 16: stalled    at x=-0.20 (doorway     ) speed 0.22
+ep 17: dropped    at x=+0.84 (stairs      ) speed 0.89
+ep 18: collision  at x=-0.32 (doorway     ) speed 0.10
+ep 19: dropped    at x=+0.98 (stairs      ) speed 0.63
+ep 20: dropped    at x=-0.21 (doorway     ) speed 0.34
+ep 21: stalled    at x=-0.40 (doorway     ) speed 0.22
+ep 22: collision  at x=-1.56 (pillar_field) speed 0.66
+ep 23: stalled    at x=+0.96 (stairs      ) speed 0.24
+ep 24: dropped    at x=+1.22 (stairs      ) speed 0.24
+ep 25: stalled    at x=+1.12 (stairs      ) speed 0.17
+ep 26: collision  at x=-1.43 (pillar_field) speed 0.63
+ep 27: dropped    at x=-0.86 (pillar_field) speed 1.24
+ep 28: collision  at x=-0.48 (doorway     ) speed 0.56
+ep 29: dropped    at x=+1.21 (stairs      ) speed 0.19
+ep 30: dropped    at x=+1.45 (stairs      ) speed 0.75
+
+===== failure map =====
+pillar_field  : {'dropped': 7, 'collision': 2}
+doorway       : {'dropped': 5, 'collision': 4, 'stalled': 2}
+stairs        : {'dropped': 7, 'stalled': 3}
+
+drops: avg speed 0.79 m/s, avg phi2 30 deg

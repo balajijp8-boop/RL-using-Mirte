@@ -1,0 +1,21 @@
+[12:39:44] === resuming watch on v31 (already training) ===
+[12:39:44] v31 500k: 49/60 (median 127.0)
+[12:39:44] v31 1M: 49/60 (median 127.3)
+[12:39:44] v31 1.5M: 50/60 (median 128.6)
+[12:39:44] v31 2M: 48/60 (median 128.3)
+[12:39:44] v31 3M: 46/60 (median 128.0)
+[13:00:41] v31 4M: 52/60 (median 128.1)
+[13:05:50] v31 4M confirm: 52/60 fresh -> pooled 104/120 (86.7%)
+[13:31:11] v31 5M: 48/60 (median 128.8)
+[14:00:07] v31 6M: 49/60 (median 129.4)
+[14:32:08] v31 7M: 50/60 (median 127.3)
+[15:01:31] v31 8M: 49/60 (median 127.9)
+[15:05:30] v31 final: 53/60 (median 128.5)
+[15:09:19] v31 BEST runs/ppo_gimbal_v31/ppo_final: headline 53/60, fresh 48/60 -> pooled 84.2% (parent bar 82.2%)
+[15:09:19] chain continues -> v32 from runs/ppo_gimbal_v31/ppo_final at lr 2.5e-06
+[15:09:19] === launching v32: from runs/ppo_gimbal_v31/ppo_final, lr=2.5e-06, NO-CURRICULUM ===
+[15:31:20] v32 500k: 52/60 (median 127.8)
+[15:36:28] v32 500k confirm: 49/60 fresh -> pooled 101/120 (84.2%)
+[15:46:57] v32 1M: 51/60 (median 128.7)
+[16:04:18] v32 1.5M: 47/60 (median 128.6)
+[16:22:11] v32 2M: 48/60 (median 127.4)

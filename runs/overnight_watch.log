@@ -1,0 +1,10 @@
+[02:24:35] overnight watch started
+[02:33:44] 2M: 43/60 success, median 124.0, {'dropped': 12, 'collision': 5}
+[03:06:22] 3M: 49/60 success, median 128.8, {'dropped': 8, 'collision': 3}
+[03:38:45] 4M: 46/60 success, median 125.8, {'dropped': 13, 'collision': 1}
+[04:11:56] 5M: 47/60 success, median 127.9, {'dropped': 11, 'collision': 2}
+[04:45:07] 6M: 48/60 success, median 126.4, {'dropped': 10, 'collision': 2}
+[05:18:04] 7M: 43/60 success, median 125.1, {'collision': 3, 'dropped': 14}
+[05:50:20] 8M: 51/60 success, median 127.6, {'dropped': 8, 'collision': 1}
+[05:54:02] 8M_final: 48/60 success, median 127.6, {'dropped': 10, 'collision': 2}
+[05:54:02] overnight watch complete: v29 finished 8M

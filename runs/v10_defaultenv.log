@@ -1,0 +1,29 @@
+ep  1: FAIL:dropped     reward     -0.1  steps  261  dist  3.45
+ep  2: FAIL:dropped     reward    -11.2  steps  100  dist  5.69
+ep  3: FAIL:stalled     reward     26.3  steps  754  dist  2.35
+ep  4: FAIL:stalled     reward     -1.1  steps  700  dist  3.98
+ep  5: FAIL:collision   reward    -12.0  steps  166  dist  4.76
+ep  6: FAIL:collision   reward      6.8  steps  317  dist  3.35
+ep  7: FAIL:dropped     reward      8.2  steps  286  dist  3.11
+ep  8: FAIL:stalled     reward     14.1  steps  951  dist  2.17
+ep  9: FAIL:stalled     reward     16.5  steps  797  dist  2.74
+ep 10: FAIL:stalled     reward     18.2  steps  773  dist  2.13
+ep 11: FAIL:stalled     reward     17.9  steps  766  dist  2.85
+ep 12: FAIL:dropped     reward      3.8  steps  235  dist  3.92
+ep 13: FAIL:collision   reward    -12.7  steps  113  dist  5.80
+ep 14: FAIL:collision   reward    -14.5  steps   79  dist  5.94
+ep 15: FAIL:dropped     reward     -2.2  steps  305  dist  3.24
+ep 16: FAIL:stalled     reward     21.6  steps 1205  dist  2.23
+ep 17: FAIL:dropped     reward     11.2  steps  281  dist  2.42
+ep 18: FAIL:collision   reward      6.4  steps  242  dist  3.68
+ep 19: FAIL:dropped     reward    -11.9  steps   81  dist  5.58
+ep 20: FAIL:dropped     reward     13.1  steps  293  dist  2.97
+------------------------------------------------------------
+checkpoint      : runs/ppo_gimbal_v10/ppo_final
+episodes        : 20
+success         : 0/20  (0%)
+failure causes  : {'dropped': 8, 'stalled': 7, 'collision': 5}
+timeout         : 0/20
+avg reward      : 4.9   median 6.6   trimmed(10%) 4.9
+avg ep length   : 435 steps
+avg final dist  : 3.62 m  (0 = goal, ~6.5 = no progress)

@@ -29,17 +29,20 @@ import subprocess
 import numpy as np
 import torch
 import mujoco
+import matplotlib
+import imageio_ffmpeg
 from PIL import Image, ImageDraw, ImageFont
 
 from stable_baselines3 import PPO
 from mirte_gimbal_env import MirteGimbalBalanceEnv
 
 W, H = 960, 540                     # 16:9, crisp on LinkedIn
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-FONT_R = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+_FONTDIR = os.path.join(matplotlib.get_data_path(), "fonts", "ttf")
+FONT = os.path.join(_FONTDIR, "DejaVuSans-Bold.ttf")     # portable: bundled with matplotlib
+FONT_R = os.path.join(_FONTDIR, "DejaVuSans.ttf")
 ROLL_SEED = 3                       # fixed scene for a fair before/after
 NOISE_SEED = 0                      # fixed sampling noise -> reproducible clips
-TOTAL_STEPS = 3_000_000
+TOTAL_STEPS = 16_000_000
 
 STATUS = {
     "running":   ("balancing…",       (150, 210, 255)),
@@ -76,6 +79,14 @@ def rollout(model, normfn, step, env, renderer, cam, vopt, fonts, max_steps, sin
 
     outcome, max_phi2, dist0 = "running", 0.0, None
     smooth = np.array(env.data.body("base_link").xpos)
+    # cosmetic wheel spin: the wheels are massless/collision-off visual meshes
+    # that nothing drives, so they'd sit frozen while the base glides. Roll their
+    # joints by distance travelled so the render looks like the real MIRTE.
+    wadr = [env.model.jnt_qposadr[env.model.joint(j).id] for j in
+            ("front_left_wheel_joint", "rear_left_wheel_joint",
+             "front_right_wheel_joint", "rear_right_wheel_joint")]
+    _prevxy = np.array(env.data.body("base_link").xpos[:2])
+    _wheel_ang = 0.0
     for t in range(max_steps):
         a, _ = model.predict(normfn(obs), deterministic=False)
         obs, rew, term, trunc, info = env.step(a)
@@ -85,6 +96,12 @@ def rollout(model, normfn, step, env, renderer, cam, vopt, fonts, max_steps, sin
         bx = np.array(env.data.body("base_link").xpos)
         smooth = 0.85 * smooth + 0.15 * bx
         cam.lookat[:] = [smooth[0], smooth[1], 0.25]
+        _, _, _yaw = env._base_rpy()
+        _wheel_ang += float(np.dot(bx[:2] - _prevxy, [np.cos(_yaw), np.sin(_yaw)])) / 0.05
+        _prevxy = bx[:2].copy()
+        for _adr in wadr:
+            env.data.qpos[_adr] = _wheel_ang
+        mujoco.mj_kinematics(env.model, env.data)
         renderer.update_scene(env.data, cam, scene_option=vopt)
         raw = renderer.render()
 
@@ -171,11 +188,15 @@ def title_card(text, sub, seconds, fps, sink):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--run", default="runs/ppo_gimbal")
+    ap.add_argument("--run", default="runs/ppo_gimbal_v3")
     ap.add_argument("--out", default="mirte_rl_progress.mp4")
     ap.add_argument("--max-steps", type=int, default=500)
     ap.add_argument("--fps", type=int, default=50)
+    ap.add_argument("--total-steps", type=int, default=0,
+                    help="run budget for the progress bar (0 = module default)")
     args = ap.parse_args()
+    if args.total_steps:
+        globals()["TOTAL_STEPS"] = args.total_steps
 
     snaps = sorted(glob.glob(os.path.join(args.run, "snap_*[0-9]k.zip")),
                    key=lambda p: int(re.search(r"snap_(\d+)k", p).group(1)))
@@ -186,7 +207,7 @@ def main():
 
     # ---- ffmpeg pipe: frames are streamed, never held in RAM ----
     proc = subprocess.Popen(
-        ["ffmpeg", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
+        [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
          "-s", f"{W}x{H}", "-r", str(args.fps), "-i", "-",
          "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20",
          "-movflags", "+faststart", args.out],
@@ -221,7 +242,7 @@ def main():
 
     proc.stdin.close()
     proc.wait()
-    print(f"\n✓ wrote {args.out}  ({W}x{H}@{args.fps})")
+    print(f"\nwrote {args.out}  ({W}x{H}@{args.fps})")
 
 
 if __name__ == "__main__":

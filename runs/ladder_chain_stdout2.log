@@ -1,0 +1,7 @@
+[10:04:05] ladder_chain v2 (confirmation-gated): resuming v30
+[10:04:05] === resuming watch on v30 (already running) ===
+[10:08:20] v30 1.5M: 49/60 success, median 130.1, trimmed 116.9, {'dropped': 9, 'collision': 2}
+[10:08:20] v30 3M headline 54/60 (>=90%) -- running independent confirmation on fresh seeds before declaring anything
+[10:12:27] v30 3M_confirm: 44/60 success, median 127.1, trimmed 101.5, {'dropped': 7, 'collision': 7, 'stalled': 2}
+[10:12:27] v30 3M: headline 54/60 did NOT hold on confirmation (44/60 fresh eps) -- not declaring victory, continuing to train
+[10:16:40] v30 7M: 48/60 success, median 127.4, trimmed 112.7, {'dropped': 11, 'collision': 1}

@@ -1,0 +1,69 @@
+ep  1: SUCCESS    at x=+3.17 (post_stairs ) speed 0.10
+ep  2: SUCCESS    at x=+3.18 (post_stairs ) speed 0.09
+ep  3: SUCCESS    at x=+2.91 (post_stairs ) speed 0.12
+ep  4: SUCCESS    at x=+3.00 (post_stairs ) speed 0.13
+ep  5: SUCCESS    at x=+3.00 (post_stairs ) speed 0.15
+ep  6: SUCCESS    at x=+3.01 (post_stairs ) speed 0.12
+ep  7: SUCCESS    at x=+2.89 (post_stairs ) speed 0.14
+ep  8: SUCCESS    at x=+2.93 (post_stairs ) speed 0.13
+ep  9: SUCCESS    at x=+3.09 (post_stairs ) speed 0.15
+ep 10: dropped    at x=+2.21 (stairs      ) speed 0.87
+ep 11: SUCCESS    at x=+3.14 (post_stairs ) speed 0.11
+ep 12: SUCCESS    at x=+2.99 (post_stairs ) speed 0.14
+ep 13: SUCCESS    at x=+2.99 (post_stairs ) speed 0.15
+ep 14: SUCCESS    at x=+3.17 (post_stairs ) speed 0.13
+ep 15: dropped    at x=-0.31 (doorway     ) speed 1.09
+ep 16: collision  at x=-2.30 (pillar_field) speed 0.40
+ep 17: SUCCESS    at x=+3.14 (post_stairs ) speed 0.13
+ep 18: SUCCESS    at x=+3.02 (post_stairs ) speed 0.12
+ep 19: SUCCESS    at x=+3.01 (post_stairs ) speed 0.14
+ep 20: SUCCESS    at x=+3.00 (post_stairs ) speed 0.11
+ep 21: SUCCESS    at x=+3.02 (post_stairs ) speed 0.13
+ep 22: collision  at x=-1.45 (pillar_field) speed 0.67
+ep 23: SUCCESS    at x=+3.06 (post_stairs ) speed 0.15
+ep 24: SUCCESS    at x=+3.16 (post_stairs ) speed 0.14
+ep 25: SUCCESS    at x=+2.92 (post_stairs ) speed 0.13
+ep 26: SUCCESS    at x=+3.19 (post_stairs ) speed 0.14
+ep 27: SUCCESS    at x=+2.90 (post_stairs ) speed 0.15
+ep 28: dropped    at x=+1.40 (stairs      ) speed 0.66
+ep 29: SUCCESS    at x=+3.03 (post_stairs ) speed 0.15
+ep 30: SUCCESS    at x=+3.04 (post_stairs ) speed 0.14
+ep 31: SUCCESS    at x=+3.12 (post_stairs ) speed 0.13
+ep 32: dropped    at x=-1.48 (pillar_field) speed 0.76
+ep 33: SUCCESS    at x=+3.13 (post_stairs ) speed 0.15
+ep 34: SUCCESS    at x=+3.02 (post_stairs ) speed 0.14
+ep 35: dropped    at x=-1.84 (pillar_field) speed 1.09
+ep 36: SUCCESS    at x=+2.92 (post_stairs ) speed 0.13
+ep 37: dropped    at x=-0.06 (doorway     ) speed 0.90
+ep 38: SUCCESS    at x=+3.16 (post_stairs ) speed 0.12
+ep 39: SUCCESS    at x=+3.17 (post_stairs ) speed 0.11
+ep 40: stalled    at x=-0.80 (pillar_field) speed 0.41
+ep 41: SUCCESS    at x=+3.17 (post_stairs ) speed 0.09
+ep 42: SUCCESS    at x=+2.97 (post_stairs ) speed 0.15
+ep 43: SUCCESS    at x=+3.14 (post_stairs ) speed 0.15
+ep 44: SUCCESS    at x=+3.03 (post_stairs ) speed 0.14
+ep 45: SUCCESS    at x=+3.19 (post_stairs ) speed 0.14
+ep 46: SUCCESS    at x=+3.14 (post_stairs ) speed 0.14
+ep 47: SUCCESS    at x=+3.06 (post_stairs ) speed 0.14
+ep 48: SUCCESS    at x=+3.18 (post_stairs ) speed 0.13
+ep 49: SUCCESS    at x=+3.24 (post_stairs ) speed 0.13
+ep 50: SUCCESS    at x=+3.16 (post_stairs ) speed 0.13
+ep 51: dropped    at x=-1.64 (pillar_field) speed 0.62
+ep 52: SUCCESS    at x=+2.98 (post_stairs ) speed 0.13
+ep 53: SUCCESS    at x=+2.97 (post_stairs ) speed 0.15
+ep 54: SUCCESS    at x=+2.88 (post_stairs ) speed 0.13
+ep 55: stalled    at x=-0.44 (doorway     ) speed 0.19
+ep 56: SUCCESS    at x=+3.20 (post_stairs ) speed 0.12
+ep 57: SUCCESS    at x=+2.92 (post_stairs ) speed 0.11
+ep 58: SUCCESS    at x=+3.25 (post_stairs ) speed 0.12
+ep 59: collision  at x=-2.64 (start_area  ) speed 0.44
+ep 60: SUCCESS    at x=+3.04 (post_stairs ) speed 0.15
+
+===== failure map =====
+start_area    : {'collision': 1}
+pillar_field  : {'collision': 2, 'dropped': 3, 'stalled': 1}
+doorway       : {'dropped': 2, 'stalled': 1}
+stairs        : {'dropped': 2}
+post_stairs   : {'SUCCESS': 48}
+
+drops: avg speed 0.86 m/s, avg phi2 30 deg

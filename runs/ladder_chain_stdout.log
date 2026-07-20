@@ -1,0 +1,16 @@
+[02:30:04] ladder_chain: waiting for v29's overnight watch to finish
+[05:54:06] v29 BEST: 51/60 success, trimmed 119.1, snap runs/ppo_gimbal_v29/snap_08000k
+[05:54:06] === launching v30: from runs/ppo_gimbal_v29/snap_08000k  lr=5e-06 ===
+[06:00:32] v30 10k: 49/60 success, median 128.1, trimmed 115.7, {'dropped': 9, 'collision': 2}
+[06:06:05] v30 50k: 49/60 success, median 126.9, trimmed 115.9, {'dropped': 8, 'collision': 3}
+[06:11:28] v30 100k: 46/60 success, median 127.8, trimmed 108.4, {'dropped': 11, 'collision': 3}
+[06:17:00] v30 250k: 46/60 success, median 126.9, trimmed 107.9, {'dropped': 9, 'collision': 5}
+[06:22:32] v30 500k: 45/60 success, median 127.2, trimmed 105.9, {'dropped': 13, 'collision': 2}
+[06:36:34] v30 1M: 52/60 success, median 129.9, trimmed 124.0, {'dropped': 7, 'collision': 1}
+[06:54:12] v30 1M: 49/60 success, median 130.1, trimmed 116.9, {'dropped': 9, 'collision': 2}
+[07:11:58] v30 2M: 49/60 success, median 129.4, trimmed 116.8, {'dropped': 9, 'collision': 2}
+[07:46:26] v30 3M: 54/60 success, median 130.2, trimmed 128.7, {'dropped': 5, 'collision': 1}
+[07:46:26] *** GOAL REACHED: v30 3M = 54/60 (>=90%) ***
+[07:46:26] v30 BEST: 54/60 success, trimmed 128.7, snap runs/ppo_gimbal_v30/snap_03000k
+[07:46:26] *** GOAL REACHED at v30: 54/60 (>=90%) -- chain stopping ***
+[07:46:26] === LADDER CHAIN DONE. Final best: v30 = 54/60 (90%), snap runs/ppo_gimbal_v30/snap_03000k ===

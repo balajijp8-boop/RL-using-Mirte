@@ -1,0 +1,10 @@
+reflex sweep on runs/ppo_gimbal_v16/snap_07000k, 30 eps/variant
+
+               variant |  succ | drops |  median |    avg
+------------------------------------------------------------
+              baseline |  8/30 |    14 |     6.7 |   34.7
+  KD 8->12 (more damp) |  5/30 |    17 |     4.5 |   24.6
+         VMAX 1.2->0.9 |  7/30 |    13 |     9.2 |   33.3
+   KA 25->18 (gentler) |  7/30 |    17 |    10.3 |   31.9
+
+done

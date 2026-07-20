@@ -1,15 +1,13 @@
 __pycache__/
 *.pyc
-# Large model files (trained policies)
-runs/ppo_gimbal/snap_*.zip
-runs/ppo_gimbal/snap_*_vecnorm.pkl
-runs/ppo_gimbal/ppo_final.zip
-runs/ppo_gimbal/vecnormalize.pkl
-runs/ppo_gimbal/PPO_1/
 
-# Video output
-mirte_rl_progress.mp4
+# Training-run checkpoint dumps (multi-hundred-MB, regenerable by re-running
+# the ladder scripts; best_policy/ holds the actual deliverable checkpoints).
+# The loose runs/*.log files (train/eval history) ARE tracked -- small and
+# they're the evidence trail for every number in RL_course_MIRTE.pdf.
+runs/ppo_gimbal_*/
+runs/ctrl_test/
+MUJOCO_LOG.TXT
 
 # TensorBoard logs
 runs/*/events.out.tfevents*
-runs/*/*.log

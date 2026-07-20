@@ -1,0 +1,69 @@
+ep  1: SUCCESS          reward    116.7  steps  539  dist  0.35
+ep  2: SUCCESS          reward    118.0  steps  528  dist  0.35
+ep  3: SUCCESS          reward    113.2  steps  544  dist  0.35
+ep  4: SUCCESS          reward    119.4  steps  535  dist  0.27
+ep  5: SUCCESS          reward    126.0  steps  623  dist  0.15
+ep  6: SUCCESS          reward    130.7  steps  550  dist  0.34
+ep  7: SUCCESS          reward    126.4  steps  630  dist  0.04
+ep  8: FAIL:dropped     reward     11.8  steps  390  dist  1.63
+ep  9: SUCCESS          reward    120.9  steps  538  dist  0.30
+ep 10: SUCCESS          reward    136.3  steps  560  dist  0.20
+ep 11: SUCCESS          reward    120.1  steps  569  dist  0.19
+ep 12: SUCCESS          reward    127.7  steps  582  dist  0.21
+ep 13: SUCCESS          reward    129.9  steps  575  dist  0.20
+ep 14: SUCCESS          reward    124.5  steps  560  dist  0.16
+ep 15: SUCCESS          reward    125.3  steps  560  dist  0.32
+ep 16: SUCCESS          reward    138.5  steps  595  dist  0.16
+ep 17: SUCCESS          reward    116.4  steps  557  dist  0.16
+ep 18: SUCCESS          reward    135.8  steps  564  dist  0.22
+ep 19: SUCCESS          reward    125.3  steps  595  dist  0.09
+ep 20: SUCCESS          reward    128.0  steps  524  dist  0.28
+ep 21: SUCCESS          reward    132.1  steps  605  dist  0.22
+ep 22: FAIL:dropped     reward     -1.9  steps  155  dist  4.58
+ep 23: SUCCESS          reward    123.7  steps  710  dist  0.08
+ep 24: SUCCESS          reward    132.1  steps  513  dist  0.35
+ep 25: SUCCESS          reward    133.1  steps  546  dist  0.16
+ep 26: SUCCESS          reward    124.6  steps  550  dist  0.18
+ep 27: SUCCESS          reward    128.1  steps  588  dist  0.29
+ep 28: FAIL:dropped     reward    -17.9  steps  146  dist  4.73
+ep 29: SUCCESS          reward    119.8  steps  615  dist  0.18
+ep 30: SUCCESS          reward    112.6  steps  599  dist  0.26
+ep 31: SUCCESS          reward    122.1  steps  547  dist  0.23
+ep 32: SUCCESS          reward    122.2  steps  659  dist  0.27
+ep 33: SUCCESS          reward    129.4  steps  584  dist  0.08
+ep 34: FAIL:dropped     reward    -19.3  steps  267  dist  4.82
+ep 35: SUCCESS          reward    127.8  steps  563  dist  0.12
+ep 36: SUCCESS          reward    130.5  steps  542  dist  0.22
+ep 37: SUCCESS          reward    130.3  steps  588  dist  0.20
+ep 38: SUCCESS          reward    126.0  steps  546  dist  0.29
+ep 39: SUCCESS          reward    134.1  steps  577  dist  0.29
+ep 40: SUCCESS          reward    133.0  steps  545  dist  0.23
+ep 41: SUCCESS          reward    121.6  steps  531  dist  0.29
+ep 42: SUCCESS          reward    132.3  steps  589  dist  0.18
+ep 43: SUCCESS          reward    131.0  steps  541  dist  0.29
+ep 44: SUCCESS          reward    118.7  steps  611  dist  0.26
+ep 45: FAIL:dropped     reward     -2.5  steps  297  dist  3.67
+ep 46: SUCCESS          reward    138.0  steps  568  dist  0.11
+ep 47: SUCCESS          reward    128.4  steps  584  dist  0.18
+ep 48: SUCCESS          reward    129.9  steps  558  dist  0.32
+ep 49: SUCCESS          reward    135.6  steps  593  dist  0.18
+ep 50: SUCCESS          reward    118.8  steps  532  dist  0.23
+ep 51: SUCCESS          reward    136.4  steps  594  dist  0.23
+ep 52: SUCCESS          reward    123.0  steps  551  dist  0.18
+ep 53: SUCCESS          reward    133.6  steps  682  dist  0.16
+ep 54: SUCCESS          reward    130.3  steps  606  dist  0.30
+ep 55: SUCCESS          reward    134.7  steps  564  dist  0.11
+ep 56: FAIL:dropped     reward     -8.2  steps  409  dist  2.88
+ep 57: FAIL:collision   reward      4.7  steps  264  dist  3.90
+ep 58: SUCCESS          reward    136.5  steps  541  dist  0.22
+ep 59: SUCCESS          reward    137.0  steps  611  dist  0.14
+ep 60: FAIL:dropped     reward    -13.8  steps  142  dist  5.34
+------------------------------------------------------------
+checkpoint      : runs/ppo_gimbal_v31/snap_04000k
+episodes        : 60
+success         : 52/60  (87%)
+failure causes  : {'dropped': 7, 'collision': 1}
+timeout         : 0/60
+avg reward      : 109.7   median 126.2   trimmed(10%) 121.3
+avg ep length   : 532 steps
+avg final dist  : 0.72 m  (0 = goal, ~6.5 = no progress)

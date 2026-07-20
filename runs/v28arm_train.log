@@ -1,0 +1,9 @@
+transplant: 13 copied, expanded [], skipped []
+saved snap_00000k (pre-train). EVAL IT (--arm-action) before trusting the run.
+[snapshot] saved snap_00010k at 10000 steps
+[snapshot] saved snap_00050k at 50000 steps
+[snapshot] saved snap_00100k at 100000 steps
+[snapshot] saved snap_00250k at 250000 steps
+[snapshot] saved snap_00500k at 500000 steps
+[snapshot] saved snap_01000k at 1000000 steps
+[snapshot] saved snap_01500k at 1500000 steps

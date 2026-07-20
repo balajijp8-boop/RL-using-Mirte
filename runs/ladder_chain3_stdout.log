@@ -1,0 +1,6 @@
+[10:45:43] === launching v31: from runs/ppo_gimbal_v30/ppo_final, lr=5e-06, NO-CURRICULUM ===
+[11:07:28] v31 500k: 49/60 (median 127.0)
+[11:23:52] v31 1M: 49/60 (median 127.3)
+[11:40:13] v31 1.5M: 50/60 (median 128.6)
+[11:55:43] v31 2M: 48/60 (median 128.3)
+[12:28:15] v31 3M: 46/60 (median 128.0)

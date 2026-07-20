@@ -1,0 +1,39 @@
+ep  1: SUCCESS          reward    123.9  steps  549  dist  0.12
+ep  2: FAIL:dropped     reward    -16.0  steps  110  dist  5.61
+ep  3: FAIL:dropped     reward      8.2  steps  296  dist  3.18
+ep  4: SUCCESS          reward    123.7  steps  599  dist  0.14
+ep  5: FAIL:dropped     reward     -5.6  steps  151  dist  4.58
+ep  6: FAIL:dropped     reward      6.7  steps  215  dist  3.67
+ep  7: FAIL:dropped     reward      2.7  steps  242  dist  3.42
+ep  8: FAIL:dropped     reward     -3.4  steps  249  dist  3.63
+ep  9: SUCCESS          reward    126.7  steps  807  dist  0.22
+ep 10: FAIL:dropped     reward      4.8  steps  302  dist  2.15
+ep 11: SUCCESS          reward    134.1  steps  663  dist  0.23
+ep 12: FAIL:dropped     reward      2.4  steps  232  dist  3.57
+ep 13: FAIL:collision   reward    -15.1  steps   52  dist  6.34
+ep 14: SUCCESS          reward    120.7  steps  639  dist  0.10
+ep 15: FAIL:dropped     reward     -2.1  steps  380  dist  2.81
+ep 16: SUCCESS          reward    126.8  steps  571  dist  0.25
+ep 17: FAIL:dropped     reward    -11.9  steps   73  dist  5.61
+ep 18: FAIL:dropped     reward     22.7  steps  445  dist  0.77
+ep 19: FAIL:dropped     reward    -12.6  steps   88  dist  5.64
+ep 20: SUCCESS          reward    136.8  steps  561  dist  0.20
+ep 21: SUCCESS          reward    136.6  steps  585  dist  0.20
+ep 22: FAIL:dropped     reward     25.9  steps  606  dist  0.57
+ep 23: SUCCESS          reward    120.5  steps  597  dist  0.23
+ep 24: FAIL:collision   reward     -1.4  steps  246  dist  3.29
+ep 25: SUCCESS          reward    137.6  steps  719  dist  0.12
+ep 26: FAIL:dropped     reward     14.0  steps  536  dist  0.78
+ep 27: FAIL:dropped     reward      1.0  steps  252  dist  3.66
+ep 28: FAIL:dropped     reward     -1.5  steps  187  dist  4.37
+ep 29: FAIL:dropped     reward     12.7  steps  268  dist  3.03
+ep 30: FAIL:dropped     reward    -12.1  steps  321  dist  3.37
+------------------------------------------------------------
+checkpoint      : runs/ppo_gimbal_v18/snap_03000k
+episodes        : 30
+success         : 10/30  (33%)
+failure causes  : {'dropped': 18, 'collision': 2}
+timeout         : 0/30
+avg reward      : 43.6   median 7.5   trimmed(10%) 39.1
+avg ep length   : 385 steps
+avg final dist  : 2.39 m  (0 = goal, ~6.5 = no progress)
