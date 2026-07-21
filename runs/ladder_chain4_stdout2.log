@@ -1,1 +1,13 @@
 [22:41:16] === resuming watch on v34 (already training, launched earlier this session) ===
+[22:59:42] v34 500k: 50/60 (median 128.7)
+[23:14:31] v34 1M: 47/60 (median 128.5)
+[23:30:17] v34 1.5M: 52/60 (median 129.2)
+[23:34:31] v34 1.5M confirm: 50/60 fresh -> pooled 102/120 (85.0%)
+[23:44:44] v34 2M: 50/60 (median 130.0)
+[00:13:35] v34 3M: 48/60 (median 129.5)
+[00:42:32] v34 4M: 50/60 (median 129.0)
+[01:12:06] v34 5M: 50/60 (median 129.4)
+[01:41:14] v34 6M: 53/60 (median 129.5)
+[01:46:18] v34 6M confirm: 50/60 fresh -> pooled 103/120 (85.8%)
+[02:10:17] v34 7M: 52/60 (median 129.8)
+[02:15:24] v34 7M confirm: 49/60 fresh -> pooled 101/120 (84.2%)

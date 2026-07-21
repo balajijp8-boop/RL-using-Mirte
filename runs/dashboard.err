@@ -1,0 +1,19 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57008)
+Traceback (most recent call last):
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\http\server.py", line 437, in handle
+    self.handle_one_request()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\http\server.py", line 425, in handle_one_request
+    method()
+  File "C:\Users\balaj\RL-using-Mirte\tools\run_dashboard.py", line 207, in do_GET
+    self.wfile.write(body)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\socketserver.py", line 826, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------

@@ -11,3 +11,10 @@ MUJOCO_LOG.TXT
 
 # TensorBoard logs
 runs/*/events.out.tfevents*
+
+# Cinematic render intermediates + audio (hundreds of MB, fully regenerable by
+# re-running scratchpad/cine_render2.py, cine_fails.py, generalize.py, cine_edit2.py).
+# The finished film mirte_rl_film_4k.mp4 IS tracked.
+scratchpad/cine/
+scratchpad/cine2/
+*.wav

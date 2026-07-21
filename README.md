@@ -1,3 +1,29 @@
+# Teaching a robot to carry a top-heavy stack it was never told how to balance
+
+A wheeled MIRTE robot carries a tall two-cylinder stack across a randomized course
+(pillar field, doorway, low staircase) into a goal zone, without dropping it. The
+policy is trained from scratch with PPO in MuJoCo. No hand-coded balancing law, no
+planned path, no instructions. Only trial, error, and a reward.
+
+**Result: ~87% delivery success** (26/30 on fresh unseen seeds; 84% pooled over a
+larger independent sample). The course layout is randomized on every episode, so each
+run is a fresh arrangement of pillars, doorway, and staircase.
+
+- **Film:** [`mirte_rl_film_4k.mp4`](mirte_rl_film_4k.mp4) (4K, 54s) — how it learns, from flailing to delivering
+- **RL primer:** [`RL_course_MIRTE.pdf`](RL_course_MIRTE.pdf) — short intro to the method used here
+
+### Current system
+
+| File | Purpose |
+|---|---|
+| `mirte_gimbal_env.py` | the trained environment (gimbal-stabilized tray, randomized course) |
+| `finetune_gimbal.py` | PPO fine-tune ladder (halving LR, snapshots) |
+| `tools/eval_checkpoint.py` | honest evaluation; `--seed-base` forces independent samples |
+| `best_policy/` | the final policy and its VecNormalize stats |
+| `scratchpad/*.py` | the renderers used to build the film |
+
+---
+
 # MIRTE Stacked-Cylinder Balance Transport (Phase 1)
 
 # RL-using-Mirte

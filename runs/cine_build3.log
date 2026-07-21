@@ -1,0 +1,7 @@
+[build]
+WROTE C:\Users\balaj\RL-using-Mirte\mirte_rl_film_4k.mp4
+Duration: 00:00:43.06, start: 0.000000, bitrate: 3878 kb/s
+Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 3840x2160, 3873 kb/s, 50 fps, 50 tbr, 12800 tbn (default)
+[verify] audio streams (should be none):
+0
+size: 20878302

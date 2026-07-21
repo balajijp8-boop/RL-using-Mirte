@@ -212,6 +212,14 @@ TIME_PENALTY = 0.006               # was 0.01 -> 0.006: v6 autopsy showed the
 # penalty out-competed). Penalize speed while astride the stair footprint.
 W_STAIR_SPEED = 0.5
 SAFE_STAIR_SPEED = 0.45            # m/s; matches pre-restructure survival speeds
+# pillar-zone speed shaping (OPT-IN via env pillar_speed_shape=True; default OFF
+# = trained env unchanged). Mirror of the stair shaping, aimed at the diagnosed
+# front-half residual: weaving pillars at ~0.9 m/s whips the tall stack. Lateral
+# accel ~ v^2 * yaw_rate, so cutting v is more effective than the yaw-cap lever
+# (which washed). Quadratic penalty for speed over SAFE while in the pillar band.
+W_PILLAR_SPEED = 0.5
+SAFE_PILLAR_SPEED = 0.6
+PILLAR_BAND = (-2.6, -0.55)        # x-range of the pillar field (failure_map section)
 # stall = terminal failure. v8@4M eval: 5/30 episodes spent the FULL 2500
 # steps frozen ~0.5 m before the doorway (rewards -42..-179). Rational under
 # the old MDP: attempting the door risks -20, stalling only drips the time
@@ -296,7 +304,8 @@ class MirteGimbalBalanceEnv(gym.Env):
                  randomize_on_reset=True, gimbal_enabled=True,
                  start_curriculum=False, tray_mount_y=0.03, tray_drop=0.06,
                  tray_mount_x=0.045, wall_hh=0.05, arm_catch=ARM_CATCH,
-                 blade_density=1000, arm_action=False, clamp_mode=None):
+                 blade_density=1000, arm_action=False, clamp_mode=None,
+                 yaw_cap=None, pillar_speed_shape=False):
         super().__init__()
         # arm_action: give the POLICY 2 extra action dims that drive the shoulder
         # lift/pan servos (the residual-drop lever after plain-ladder + speed-cap
@@ -310,6 +319,13 @@ class MirteGimbalBalanceEnv(gym.Env):
         # tray_drop=0.02) to cut pendulum swing. Built for visual approval
         # BEFORE any training; None reproduces the exact trained geometry.
         self.clamp_mode = clamp_mode
+        # yaw_cap: opt-in cap (rad/s) on the applied yaw command; None = unchanged.
+        # Targets front-half pillar/doorway weaving drops (see _apply usage).
+        self.yaw_cap = yaw_cap
+        # pillar_speed_shape: opt-in train-time reward penalty for over-speed in
+        # the pillar field (default False = unchanged). Eval behavior unaffected
+        # (reward isn't used to score eval); only the training gradient changes.
+        self.pillar_speed_shape = pillar_speed_shape
         self._grip_pose = ({"_gripper_link_joint_r": -0.62,
                             "_gripper_link_joint_l": 0.62}
                            if clamp_mode == "fingers" else dict(GRIP_LINK_POSE))
@@ -1072,6 +1088,14 @@ class MirteGimbalBalanceEnv(gym.Env):
         dwz_max = YAW_ACC_CMD_MAX * CTRL_DT
         self._wz_cmd += float(np.clip(action[2] * MAX_ANG_VEL - self._wz_cmd,
                                       -dwz_max, dwz_max))
+        # OPT-IN yaw-rate cap (default None = unchanged). Diagnosis (v31 failure
+        # map): residual drops are front-half pillar/doorway weaving at ~0.9 m/s,
+        # stack tilting 30deg -- hard turns whip the tall stack sideways. Capping
+        # the APPLIED yaw (not MAX_ANG_VEL, which normalizes the obs) forces
+        # gentler S-curves; the policy trains under it and adapts. Untested lever
+        # per the handoff ("yaw whip untested as a drop cause").
+        if self.yaw_cap is not None:
+            self._wz_cmd = float(np.clip(self._wz_cmd, -self.yaw_cap, self.yaw_cap))
         # policy-driven arm: map the 2 extra action dims to shoulder servo
         # targets (held across the control period, like a real position servo).
         # _apply_gimbal won't touch these (its _apply_arm_catch is gated on
@@ -1112,11 +1136,15 @@ class MirteGimbalBalanceEnv(gym.Env):
         speed = float(np.hypot(*self._base_vel()[3:5]))
         on_stairs = self._stair_band[0] <= pos[0] <= self._stair_band[1]
         stair_overspeed = max(0.0, speed - SAFE_STAIR_SPEED) if on_stairs else 0.0
+        # opt-in pillar-zone speed shaping (same quadratic form as stairs)
+        in_pillars = self.pillar_speed_shape and PILLAR_BAND[0] <= pos[0] < PILLAR_BAND[1]
+        pillar_overspeed = max(0.0, speed - SAFE_PILLAR_SPEED) if in_pillars else 0.0
 
         reward = (W_PROGRESS * progress - W_TILT_BOT * phi1**2
                   - W_TILT_TOP * phi2**2 - W_TRAY * tray_tilt**2
                   - W_JERK * jerk - W_PROX * prox**2
-                  - W_STAIR_SPEED * stair_overspeed**2 - TIME_PENALTY)
+                  - W_STAIR_SPEED * stair_overspeed**2
+                  - W_PILLAR_SPEED * pillar_overspeed**2 - TIME_PENALTY)
         terminated = False
         info = {"dist": dist, "phi1": phi1, "phi2": phi2, "tray_tilt": tray_tilt}
         # stall detection: terminal failure if best distance hasn't improved

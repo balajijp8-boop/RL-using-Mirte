@@ -1,0 +1,11 @@
+[build] assembling...
+SILENT C:\Users\balaj\RL-using-Mirte\scratchpad\cine2\silent.mp4
+Duration: 00:00:50.52, start: 0.000000, bitrate: 3427 kb/s
+[build] silent duration 00:00:50.52 = 50.52s
+[music] generating 50.52s bed...
+[mux] muxing...
+[done]
+  Duration: 00:00:50.52, start: 0.000000, bitrate: 3624 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 3840x2160, 3422 kb/s, 50 fps, 50 tbr, 12800 tbn (default)
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 96000 Hz, stereo, fltp, 189 kb/s (default)
+size: 22890440

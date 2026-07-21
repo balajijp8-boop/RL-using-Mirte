@@ -1,0 +1,16 @@
+=== finding diverse failures ===
+[start] seed 100 rand DROPPED x=-3.32 len=9
+[pillars] seed 11 det DROPPED x=-2.03 len=104
+[stairs] seed 15 det DROPPED x=0.53 len=431
+[crash] seed 19 det CRASHED x=-0.48 len=270
+[stairs] seed 64 det DROPPED x=0.63 len=326
+[doorway] seed 110 det DROPPED x=-0.28 len=271
+=== rendering failures ===
+  wrote fail0_start.mp4 (65 frames)
+  wrote fail1_pillars.mp4 (91 frames)
+  wrote fail2_crash.mp4 (91 frames)
+  wrote fail3_doorway.mp4 (91 frames)
+  wrote fail4_stairs.mp4 (91 frames)
+  wrote fail5_stairs.mp4 (91 frames)
+MANIFEST: [('fail0_start', 'start', 'DROPPED', -3.32), ('fail1_pillars', 'pillars', 'DROPPED', -2.03), ('fail2_crash', 'crash', 'CRASHED', -0.48), ('fail3_doorway', 'doorway', 'DROPPED', -0.28), ('fail4_stairs', 'stairs', 'DROPPED', 0.53), ('fail5_stairs', 'stairs', 'DROPPED', 0.63)]
+done

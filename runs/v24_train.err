@@ -1,0 +1,58 @@
+C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\on_policy_algorithm.py:150: UserWarning: You are trying to run PPO on the GPU, but it is primarily intended to run on the CPU when not using a CNN policy (you are using ActorCriticPolicy which should be a MlpPolicy). See https://github.com/DLR-RM/stable-baselines3/issues/1245 for more info. You can pass `device='cpu'` or `export CUDA_VISIBLE_DEVICES=` to force using the CPU.Note: The model will train, but the GPU utilization will be poor and the training might take longer than on CPU.
+  warnings.warn(
+Process SpawnProcess-11:
+Traceback (most recent call last):
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\subproc_vec_env.py", line 42, in _worker
+    observation, reset_info = env.reset()
+  File "C:\Users\balaj\RL-using-Mirte\mirte_gimbal_env.py", line 969, in reset
+    self.model = mujoco.MjModel.from_xml_string(xml)
+MemoryError: bad allocation
+Traceback (most recent call last):
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\connection.py", line 312, in _recv_bytes
+    nread, err = ov.GetOverlappedResult(True)
+BrokenPipeError: [WinError 109] The pipe has been ended
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\balaj\RL-using-Mirte\finetune_gimbal.py", line 114, in <module>
+    main()
+  File "C:\Users\balaj\RL-using-Mirte\finetune_gimbal.py", line 104, in main
+    model.learn(total_timesteps=args.steps,
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\ppo\ppo.py", line 311, in learn
+    return super().learn(
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\on_policy_algorithm.py", line 324, in learn
+    continue_training = self.collect_rollouts(self.env, callback, self.rollout_buffer, n_rollout_steps=self.n_steps)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\on_policy_algorithm.py", line 218, in collect_rollouts
+    new_obs, rewards, dones, infos = env.step(clipped_actions)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\base_vec_env.py", line 222, in step
+    return self.step_wait()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\vec_normalize.py", line 181, in step_wait
+    obs, rewards, dones, infos = self.venv.step_wait()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\vec_monitor.py", line 75, in step_wait
+    obs, rewards, dones, infos = self.venv.step_wait()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\subproc_vec_env.py", line 137, in step_wait
+    results = [remote.recv() for remote in self.remotes]
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\subproc_vec_env.py", line 137, in <listcomp>
+    results = [remote.recv() for remote in self.remotes]
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\connection.py", line 321, in _recv_bytes
+    raise EOFError
+EOFError
+Exception ignored in: <function tqdm.__del__ at 0x000001E43D123E20>
+Traceback (most recent call last):
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\tqdm\std.py", line 1148, in __del__
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\tqdm\rich.py", line 121, in close
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\progress.py", line 1190, in __exit__
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\progress.py", line 1176, in stop
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\live.py", line 162, in stop
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\console.py", line 864, in __exit__
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\console.py", line 820, in _exit_buffer
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\console.py", line 2055, in _check_buffer
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\rich\console.py", line 2084, in _write_buffer
+ImportError: sys.meta_path is None, Python is likely shutting down

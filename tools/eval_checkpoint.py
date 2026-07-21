@@ -31,6 +31,8 @@ def main():
                     help="override box-wall density (original 1000)")
     ap.add_argument("--arm-action", action="store_true",
                     help="7-dim policy-controlled arm env (must match the checkpoint)")
+    ap.add_argument("--yaw-cap", type=float, default=None,
+                    help="applied-yaw cap (rad/s); must match how the checkpoint trained")
     ap.add_argument("--seed-base", type=int, default=1000,
                     help="episode seeds start here (default 1000). Use a "
                     "different base for a genuinely independent confirmation "
@@ -47,6 +49,8 @@ def main():
         envkw["blade_density"] = args.blade_density
     if args.arm_action:
         envkw["arm_action"] = True
+    if args.yaw_cap is not None:
+        envkw["yaw_cap"] = args.yaw_cap
 
     model = PPO.load(f"{args.snap}.zip", device="cpu")
     vn_path = f"{args.snap}_vecnorm.pkl"

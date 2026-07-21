@@ -1,0 +1,15 @@
+C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\on_policy_algorithm.py:150: UserWarning: You are trying to run PPO on the GPU, but it is primarily intended to run on the CPU when not using a CNN policy (you are using ActorCriticPolicy which should be a MlpPolicy). See https://github.com/DLR-RM/stable-baselines3/issues/1245 for more info. You can pass `device='cpu'` or `export CUDA_VISIBLE_DEVICES=` to force using the CPU.Note: The model will train, but the GPU utilization will be poor and the training might take longer than on CPU.
+  warnings.warn(
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\site-packages\stable_baselines3\common\vec_env\subproc_vec_env.py", line 43, in _worker
+    remote.send((observation, reward, done, info, reset_info))
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\connection.py", line 206, in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+  File "C:\Users\balaj\.conda\envs\mirte_rl\lib\multiprocessing\connection.py", line 280, in _send_bytes
+    ov, err = _winapi.WriteFile(self._handle, buf, overlapped=True)
+BrokenPipeError: [WinError 232] The pipe is being closed

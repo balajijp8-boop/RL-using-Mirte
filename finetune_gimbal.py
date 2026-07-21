@@ -67,6 +67,12 @@ def main():
                     help="train 100%% full-course standard starts (polish mode: "
                     "matches the eval distribution; curriculum's value-propagation "
                     "job is done once the policy already completes the course)")
+    ap.add_argument("--yaw-cap", type=float, default=None,
+                    help="cap applied yaw command (rad/s) to gentle the turns "
+                    "that whip the stack when weaving pillars/doorway")
+    ap.add_argument("--pillar-speed", action="store_true",
+                    help="train-time reward penalty for over-speed in the pillar "
+                    "field (targets front-half weaving drops; eval unaffected)")
     args = ap.parse_args()
 
     vecnorm = args.vecnorm or os.path.join(
@@ -76,7 +82,9 @@ def main():
     def make_env():
         return MirteGimbalBalanceEnv(start_curriculum=not args.no_curriculum,
                                      tray_mount_y=args.tray_mount_y,
-                                     tray_drop=args.tray_drop)
+                                     tray_drop=args.tray_drop,
+                                     yaw_cap=args.yaw_cap,
+                                     pillar_speed_shape=args.pillar_speed)
 
     env = SubprocVecEnv([make_env for _ in range(args.n_envs)])
     env = VecMonitor(env)

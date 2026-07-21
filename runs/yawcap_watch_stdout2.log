@@ -1,0 +1,6 @@
+[02:48:43] === yawcap_watch started: v35 under yaw-cap 0.6, stop-on-54 ===
+[03:03:04] v35 500k: 50/60 (yaw-cap 0.6)
+[03:23:13] v35 1M: 52/60 (cap 0.6) | confirm 48/60 -> pooled 100/120 (83.3%)
+[03:33:54] v35 1.5M: 49/60 (yaw-cap 0.6)
+[03:49:50] v35 2M: 47/60 (yaw-cap 0.6)
+[04:20:56] v35 3M: 47/60 (yaw-cap 0.6)

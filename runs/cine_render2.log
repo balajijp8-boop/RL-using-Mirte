@@ -1,0 +1,22 @@
+=== finding episodes ===
+[DELIVERED] seed 0: len 568 failx 3.12
+[DROPPED] seed 100: len 42 failx -3.25
+[DROPPED] seed 11: len 105 failx -2.03
+[CRASHED] seed 19: len 271 failx -0.48
+[DROPPED] seed 64: len 327 failx 0.63
+=== rendering ===
+  wrote hero.png (hero)
+  wrote master_drone.mp4 (613 frames, drone)
+  wrote master_chase.mp4 (613 frames, chase)
+  wrote master_fpp.mp4 (613 frames, fpp)
+  wrote master_orbit.mp4 (613 frames, orbit)
+  wrote master_side.mp4 (613 frames, side)
+  wrote flail_chase.mp4 (60 frames, chase)
+  wrote flail_drone.mp4 (60 frames, drone)
+  wrote pillar_fpp.mp4 (123 frames, fpp)
+  wrote pillar_chase.mp4 (123 frames, chase)
+  wrote crash_drone.mp4 (289 frames, drone)
+  wrote crash_chase.mp4 (289 frames, chase)
+  wrote stair_chase.mp4 (345 frames, chase)
+  wrote stair_fpp.mp4 (345 frames, fpp)
+done -> C:\Users\balaj\RL-using-Mirte\scratchpad\cine2

@@ -61,3 +61,44 @@
 [18:47:29] v33 6M: 47/60 (median 127.5)
 [22:38:21] === launching v34: from best_policy/mirte_best, lr=2.5e-06, NO-CURRICULUM, fresh folder ===
 [22:41:16] === resuming watch on v34 (already training, launched earlier this session) ===
+[22:59:42] v34 500k: 50/60 (median 128.7)
+[23:14:31] v34 1M: 47/60 (median 128.5)
+[23:30:17] v34 1.5M: 52/60 (median 129.2)
+[23:34:31] v34 1.5M confirm: 50/60 fresh -> pooled 102/120 (85.0%)
+[23:44:44] v34 2M: 50/60 (median 130.0)
+[00:13:35] v34 3M: 48/60 (median 129.5)
+[00:42:32] v34 4M: 50/60 (median 129.0)
+[01:12:06] v34 5M: 50/60 (median 129.4)
+[01:41:14] v34 6M: 53/60 (median 129.5)
+[01:46:18] v34 6M confirm: 50/60 fresh -> pooled 103/120 (85.8%)
+[02:10:17] v34 7M: 52/60 (median 129.8)
+[02:15:24] v34 7M confirm: 49/60 fresh -> pooled 101/120 (84.2%)
+[02:45:33] === yawcap_watch started: v35 under yaw-cap 0.6, stop-on-54 ===
+[02:48:43] === yawcap_watch started: v35 under yaw-cap 0.6, stop-on-54 ===
+[03:03:04] v35 500k: 50/60 (yaw-cap 0.6)
+[03:23:13] v35 1M: 52/60 (cap 0.6) | confirm 48/60 -> pooled 100/120 (83.3%)
+[03:33:54] v35 1.5M: 49/60 (yaw-cap 0.6)
+[03:49:50] v35 2M: 47/60 (yaw-cap 0.6)
+[04:20:56] v35 3M: 47/60 (yaw-cap 0.6)
+[04:35:24] === PIVOT: v35 (yaw-cap 0.6) washed (arc 50/52/49/47/47, ~84% = no gain). Launching v36 = yaw-cap 0.5 from v31 base ===
+[04:35:40] === yawcap_watch started: v36 under yaw-cap 0.5, stop-on-54 ===
+[04:56:55] v36 500k: 46/60 (yaw-cap 0.5)
+[05:12:07] v36 1M: 48/60 (yaw-cap 0.5)
+[05:28:02] v36 1.5M: 49/60 (yaw-cap 0.5)
+[05:31:54] === PIVOT 2: yaw-cap exhausted (v35@0.6 washed, v36@0.5 washed to baseline). Launching v37 = PILLAR-ZONE SPEED SHAPING from v31 base (train-time reward penalty for >0.6 m/s in pillar field; attacks v^2 in the lateral-whip that yaw-cap couldn't). ===
+[05:32:10] === yawcap_watch started: v37 under yaw-cap 0.6, stop-on-54 ===
+[05:52:44] v37 500k: 51/60 (pillar-shape)
+[06:08:43] v37 1M: 49/60 (pillar-shape)
+[06:28:34] v37 1.5M: 52/60 (pillar-shape) | confirm 46/60 -> pooled 98/120 (81.7%)
+[06:39:16] v37 2M: 51/60 (pillar-shape)
+[06:51] === MORNING SUMMARY (overnight autonomous run complete) ===
+Honest ceiling = ~84%. Best verified policy = v31/ppo_final: 50/60 fixed-seed, pooled 84.2% (fresh-seed confirmed). Saved in best_policy/.
+Tonight's levers, ALL washed to ~84%:
+  - blind ladder v32/v33/v34 (lr-halving): flat, no diagnosis behind it.
+  - yaw-cap 0.6 (v35): 50/52/49/47/47 = baseline. zero-shot +3 didn't survive training.
+  - yaw-cap 0.5 (v36): 46/48/49 = baseline (over-constrained, recovered to baseline).
+  - pillar-zone speed shaping (v37, NEW code lever): 51/49/52/51; the 52 confirmed at 46 fresh (pooled 81.7%). washed.
+Diagnosis: residual failures are front-half pillar/doorway weaving DROPS at ~0.9 m/s (failure_map: 10/12 front-half; stairs solved). This is the marginal 2-cylinder payload physics, not a control gap -- neither turn-rate (yaw) nor speed shaping moves it, because the policy re-optimizes to an equally-marginal solution.
+Conclusion: 90% (54/60 confirmed) is NOT reachable honestly under the fixed 2-cylinder-stack requirement. It would need a payload-spec change (which the user has held fixed) or accepting caging (which the user correctly called cheating). ~84% is the real, honest result.
+Deliverables done: best_policy/ (v31), mirte_delivery_v23_best.mp4, RL_course_MIRTE.pdf, repo pushed to GitHub.
+=== machine now idle; health-only wakes until user returns ===

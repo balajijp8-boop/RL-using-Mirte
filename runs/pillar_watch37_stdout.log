@@ -1,0 +1,5 @@
+[05:32:10] === yawcap_watch started: v37 under yaw-cap 0.6, stop-on-54 ===
+[05:52:44] v37 500k: 51/60 (pillar-shape)
+[06:08:43] v37 1M: 49/60 (pillar-shape)
+[06:28:34] v37 1.5M: 52/60 (pillar-shape) | confirm 46/60 -> pooled 98/120 (81.7%)
+[06:39:16] v37 2M: 51/60 (pillar-shape)

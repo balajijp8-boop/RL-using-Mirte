@@ -1,0 +1,10 @@
+[build] assembling 4K silent film...
+WROTE C:\Users\balaj\RL-using-Mirte\mirte_rl_film_4k.mp4
+Duration: 00:00:35.98, start: 0.000000, bitrate: 2424 kb/s
+Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 3840x2160 [SAR 1:1 DAR 16:9], 2419 kb/s, 50 fps, 50 tbr, 12800 tbn (default)
+[mux] adding music...
+[done]
+  Duration: 00:00:35.85, start: 0.000000, bitrate: 2625 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 3840x2160 [SAR 1:1 DAR 16:9], 2429 kb/s, 50 fps, 50 tbr, 12800 tbn (default)
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 96000 Hz, stereo, fltp, 188 kb/s (default)
+size: 11764879
